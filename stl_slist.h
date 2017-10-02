@@ -86,7 +86,7 @@ __slist_splice_after(_Slist_node_base *__pos, _Slist_node_base *__head) {
 	}
 }
 
-inline _Slist_node_base *__slist_reverse(_Slist_node_base *__node) {//单向链表反转，返回的__node的新链表的尾结点
+inline _Slist_node_base *__slist_reverse(_Slist_node_base *__node) {//单向链表反转，返回__node所在新链表的头结点
 	_Slist_node_base *__result = __node;
 	__node = __node->_M_next;
 	__result->_M_next = 0;
