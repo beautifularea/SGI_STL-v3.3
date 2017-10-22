@@ -120,9 +120,14 @@ __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex,
 {
 	_Distance __topIndex = __holeIndex;
 	_Distance __secondChild = 2 * __holeIndex + 2;
+
+	// 调整元素位置
 	while (__secondChild < __len) {
+		// 选择两个子结点中较大的
 		if (*(__first + __secondChild) < *(__first + (__secondChild - 1)))
 			__secondChild--;
+
+		// 将较大子结点向上填充，并向下移动继续调整
 		*(__first + __holeIndex) = *(__first + __secondChild);
 		__holeIndex = __secondChild;
 		__secondChild = 2 * (__secondChild + 1);
@@ -131,6 +136,7 @@ __adjust_heap(_RandomAccessIterator __first, _Distance __holeIndex,
 		*(__first + __holeIndex) = *(__first + (__secondChild - 1));
 		__holeIndex = __secondChild - 1;
 	}
+	// 将最初的heap末尾元素向上调整
 	__push_heap(__first, __holeIndex, __topIndex, __value);
 }
 
@@ -139,7 +145,9 @@ inline void
 __pop_heap(_RandomAccessIterator __first, _RandomAccessIterator __last,
 	_RandomAccessIterator __result, _Tp __value, _Distance*)
 {
+	// 将弹出的元素调整到堆尾，该元素需要用户手动弹出
 	*__result = *__first;
+	// 去掉末尾被弹出的元素，调整堆
 	__adjust_heap(__first, _Distance(0), _Distance(__last - __first), __value);
 }
 
