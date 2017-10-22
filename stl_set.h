@@ -28,6 +28,8 @@
  *   You should not attempt to use it directly.
  */
 
+ //红黑树实现的集合
+
 #ifndef __SGI_STL_INTERNAL_SET_H
 #define __SGI_STL_INTERNAL_SET_H
 
@@ -72,7 +74,7 @@ public:
 private:
   typedef _Rb_tree<key_type, value_type, 
                   _Identity<value_type>, key_compare, _Alloc> _Rep_type;
-  _Rep_type _M_t;  // red-black tree representing set
+  _Rep_type _M_t;  // red-black tree representing set 红黑树表示集合
 public:
   typedef typename _Rep_type::const_pointer pointer;
   typedef typename _Rep_type::const_pointer const_pointer;
