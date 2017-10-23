@@ -234,7 +234,7 @@ __make_heap(_RandomAccessIterator __first,
 
 	while (true) {
 		__adjust_heap(__first, __parent, __len, _Tp(*(__first + __parent)));
-		if (__parent == 0) return;
+		if (__parent == 0) return; // ÍË³ö while
 		__parent--;
 	}
 }
