@@ -36,7 +36,8 @@ __STL_BEGIN_NAMESPACE
 #pragma set woff 1209
 #endif
 
-// Heap-manipulation functions: push_heap, pop_heap, make_heap, sort_heap.
+// Heap-manipulation functions 堆操作函数:
+// push_heap, pop_heap, make_heap, sort_heap.
 
 template <class _RandomAccessIterator, class _Distance, class _Tp>
 void
@@ -225,9 +226,9 @@ pop_heap(_RandomAccessIterator __first,
 template <class _RandomAccessIterator, class _Tp, class _Distance>
 void
 __make_heap(_RandomAccessIterator __first,
-	_RandomAccessIterator __last, _Tp*, _Distance*)
+	_RandomAccessIterator __last, _Tp*, _Distance*) // 建堆
 {
-	if (__last - __first < 2) return;
+	if (__last - __first < 2) return; // 堆是完全二叉树
 	_Distance __len = __last - __first;
 	_Distance __parent = (__len - 2) / 2;
 
